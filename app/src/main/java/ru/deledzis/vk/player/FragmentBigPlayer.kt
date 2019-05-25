@@ -131,6 +131,7 @@ class FragmentBigPlayer : BaseFragment() {
     }
 
     private fun initSeekBar() {
+        mSeekBar.progress = mActivity.lastPosBeforePause / 1000
         mSeekBar.max = mActivity.duration.toInt() / 1000
         Log.d(TAG, mSeekBar.max.toString())
 

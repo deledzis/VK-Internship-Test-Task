@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Course work Java</string>
+    <string name="app_name">VK Internship Test App</string>
     <string name="track_picture_image_description">Current playing track album picture</string>
     <string name="mini_player_next_image_description">Next track button in mini player</string>
     <string name="mini_player_pause_image_description">Pause playing track from mini player</string>

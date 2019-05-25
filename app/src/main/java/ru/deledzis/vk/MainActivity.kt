@@ -16,9 +16,10 @@ class MainActivity : AppCompatActivity(), IMediaPlayerController {
     private val tag = this.javaClass.name
 
     private lateinit var mCurrentTrack: Track
-    private var mCurrentTrackIndex = -1
+    private var mCurrentTrackIndex = 0
     private var mMediaPlayer: MediaPlayer? = null
     private var mLooping: Boolean = false
+    private var mLastPosBeforePause: Int = 0
 
     val isPlaying: Boolean
         get() {
@@ -26,13 +27,16 @@ class MainActivity : AppCompatActivity(), IMediaPlayerController {
         }
 
     val duration: Long
-        get() = mMediaPlayer?.duration?.toLong() ?: -1L
+        get() = mMediaPlayer?.duration?.toLong() ?: 0L
 
     val mediaPlayerPosition: Int
-        get() = mMediaPlayer?.currentPosition ?: -1
+        get() = mMediaPlayer?.currentPosition ?: 0
 
     val currentTrack: Track
         get() = mCurrentTrack
+
+    val lastPosBeforePause: Int
+        get() = mLastPosBeforePause
 
     private lateinit var mFragmentTracksList: FragmentTracksList
     private var mFragmentBigPlayer: FragmentBigPlayer? = null
@@ -81,6 +85,7 @@ class MainActivity : AppCompatActivity(), IMediaPlayerController {
         mMediaPlayer?.let {
             if (it.trackInfo != null) {
                 if (it.isPlaying) {
+                    mLastPosBeforePause = mediaPlayerPosition
                     it.pause()
                 }
             }

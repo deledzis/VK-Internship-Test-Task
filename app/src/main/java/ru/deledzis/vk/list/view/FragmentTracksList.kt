@@ -229,6 +229,7 @@ class FragmentTracksList : BaseFragment(), TracksListAdapter.TracksListAdapterLi
     }
 
     fun removeCallback(runnable: Runnable) {
+        mPauseTrackButton.setImageDrawable(mActivity.getDrawable(R.drawable.ic_play_arrow))
         mHandler.removeCallbacks(runnable)
     }
 
